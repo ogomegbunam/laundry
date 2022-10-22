@@ -14,7 +14,7 @@ width: MediaQuery.of(context).size.width,
         onPressed: () {
           //Navigator.pushNamed(context, '/home');
         },
-        child: const Text('Login'),
+        child: const Text('Log in',style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500),),
       ),
     );
   }

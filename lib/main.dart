@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:laundry/auth/log_in.dart';
+import 'package:laundry/splashscreen.dart';
 import 'package:material_color_generator/material_color_generator.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0xFF1E1E1E),
         primarySwatch: generateMaterialColor(color: const Color(0xFfAE0A13)),
       ),
-      home: const Login(),
+      home:  const Splashscreen(),
     );
   }
 }

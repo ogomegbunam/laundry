@@ -31,6 +31,7 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       //backgroundColor: Color,
       body: SafeArea(
@@ -41,8 +42,17 @@ class _LoginState extends State<Login> {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-
                 children: [
+                  Column(children: [
+                    Image.asset(
+                      'images/Laundry3.png',
+                     // width: screenSize.width * 0.4,
+                      //height: 50,
+                     // fit: BoxFit.fitWidth,
+                    ),
+                    
+                    
+                  ]),
                   const Text(
                     'Email Address',
                     style: TextStyle(
@@ -54,7 +64,7 @@ class _LoginState extends State<Login> {
                     height: 5,
                   ),
                   Container(
-                    color: Color(0xFF3E414A),
+                    color: const Color(0xFF3E414A),
                     child: TextFormField(
                         cursorColor: Colors.grey,
 
@@ -104,7 +114,7 @@ class _LoginState extends State<Login> {
                     height: 5,
                   ),
                   Container(
-                    color: Color(0xFF3E414A),
+                    color: const Color(0xFF3E414A),
                     child: TextFormField(
                         cursorColor: Colors.grey,
                         obscureText: passVisibility,
@@ -151,8 +161,20 @@ class _LoginState extends State<Login> {
                           ),
                         )),
                   ),
-                  SizedBox(height: 60,),
-                  Button(),
+                  const SizedBox(
+                    height: 60,
+                  ),
+                  const Button(),
+                  Row( 
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                    const Text('Don\'t have an account?',style: TextStyle(color: Colors.white70,fontSize: 14),),
+                    TextButton(
+                        onPressed: () {
+                         // Navigator.pushNamed(context, '/sign_up');
+                        },
+                        child: const Text('Sign Up'))
+                  ],)
                 ],
               ),
             ),
