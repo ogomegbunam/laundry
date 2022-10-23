@@ -46,12 +46,10 @@ class _LoginState extends State<Login> {
                   Column(children: [
                     Image.asset(
                       'images/Laundry3.png',
-                     // width: screenSize.width * 0.4,
+                      // width: screenSize.width * 0.4,
                       //height: 50,
-                     // fit: BoxFit.fitWidth,
+                      // fit: BoxFit.fitWidth,
                     ),
-                    
-                    
                   ]),
                   const Text(
                     'Email Address',
@@ -164,17 +162,27 @@ class _LoginState extends State<Login> {
                   const SizedBox(
                     height: 60,
                   ),
-                  const Button(),
-                  Row( 
+                  Button(
+                    title: 'Log In',
+                    textcolour: Colors.white,
+                    colour: const Color(0xFFAE0A13),
+                    ontap: () {},
+                    
+                  ),
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                    const Text('Don\'t have an account?',style: TextStyle(color: Colors.white70,fontSize: 14),),
-                    TextButton(
-                        onPressed: () {
-                         // Navigator.pushNamed(context, '/sign_up');
-                        },
-                        child: const Text('Sign Up'))
-                  ],)
+                      const Text(
+                        'Don\'t have an account?',
+                        style: TextStyle(color: Colors.white70, fontSize: 14),
+                      ),
+                      TextButton(
+                          onPressed: () {
+                            // Navigator.pushNamed(context, '/sign_up');
+                          },
+                          child: const Text('Sign Up'))
+                    ],
+                  )
                 ],
               ),
             ),

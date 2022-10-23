@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:laundry/auth/log_in.dart';
+import 'package:laundry/onboard.dart';
 
 
 class Splashscreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class _SplashscreenState extends State<Splashscreen> {
     super.initState();
     Timer(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const Login()));
+          context, MaterialPageRoute(builder: (context) => const Onboard()));
     });
   }
 
