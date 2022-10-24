@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laundry/Sign_up.dart';
 
 import '../widgets/button.dart';
 
@@ -34,6 +35,19 @@ class _LoginState extends State<Login> {
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       //backgroundColor: Color,
+appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Form(
@@ -61,43 +75,44 @@ class _LoginState extends State<Login> {
                   const SizedBox(
                     height: 5,
                   ),
-                  Container(
-                    color: const Color(0xFF3E414A),
-                    child: TextFormField(
-                        cursorColor: Colors.grey,
+                  TextFormField(
+                      cursorColor: Colors.grey,
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600),
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      validator: (value) {
+                        Pattern pattern =
+                            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                        RegExp regex = RegExp(pattern.toString());
+                        if (value!.isEmpty) {
+                          return 'Please enter your email';
+                        } else if (!regex.hasMatch(value)) {
+                          return 'Enter a Valid Email';
+                        }
 
-                        //autovalidateMode: AutovalidateMode.always,
-                        validator: (value) {
-                          Pattern pattern =
-                              r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-                          RegExp regex = RegExp(pattern.toString());
-                          if (value!.isEmpty) {
-                            return 'Please enter your email';
-                          } else if (!regex.hasMatch(value)) {
-                            return 'Enter Valid Email';
-                          }
-
-                          return null;
-                        },
-                        decoration: const InputDecoration(
-                            fillColor: Color(0xFF3E414A),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Colors.white70, width: 2),
-                            ),
-                            contentPadding:
-                                EdgeInsets.fromLTRB(5.0, 15.0, 20.0, 15.0),
-                            // prefixIcon: Icon(FontAwesomeIcons.envelope),
-                            prefixIconColor: Colors.white70,
-                            focusColor: Color(0xFF3E414A),
-                            hintText: 'JohnDoe@email.com',
-                            hintStyle: TextStyle(
-                                fontSize: 16,
-                                color: Colors.white10,
-                                fontWeight: FontWeight.w400),
-                            border: UnderlineInputBorder(
-                                borderSide: BorderSide.none))),
-                  ),
+                        return null;
+                      },
+                      decoration: const InputDecoration(
+                          fillColor: Color(0xFF3E414A),
+                          filled: true,
+                          focusedBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Colors.white70, width: 2),
+                          ),
+                          contentPadding:
+                              EdgeInsets.fromLTRB(5.0, 15.0, 20.0, 15.0),
+                          // prefixIcon: Icon(FontAwesomeIcons.envelope),
+                          prefixIconColor: Colors.white70,
+                          focusColor: Color(0xFF3E414A),
+                          hintText: 'JohnDoe@email.com',
+                          hintStyle: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white10,
+                              fontWeight: FontWeight.w400),
+                          border: UnderlineInputBorder(
+                              borderSide: BorderSide.none))),
                   const SizedBox(
                     height: 24,
                   ),
@@ -111,54 +126,59 @@ class _LoginState extends State<Login> {
                   const SizedBox(
                     height: 5,
                   ),
-                  Container(
-                    color: const Color(0xFF3E414A),
-                    child: TextFormField(
-                        cursorColor: Colors.grey,
-                        obscureText: passVisibility,
-                        onChanged: (val) {
-                          setState(() {});
-                        },
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Please enter your password';
-                          } else if (value.length < 8) {
-                            return 'Password should be at least 8 characters';
-                          }
-                          return null;
-                        },
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        controller: passwordController,
-                        decoration: InputDecoration(
-                          focusedBorder: const UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.grey),
-                          ),
-                          contentPadding:
-                              const EdgeInsets.fromLTRB(5.0, 15.0, 20.0, 15.0),
-                          // prefixIcon: const Icon(FontAwesomeIcons.lock),
-                          suffixIcon: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  passVisibility = !passVisibility;
-                                });
-                              },
-                              icon: passVisibility
-                                  ? const Icon(Icons.visibility_off,
-                                      color: Colors.grey)
-                                  : const Icon(Icons.visibility,
-                                      color: Colors.grey)),
-                          prefixIconColor: Colors.grey,
-                          focusColor: null,
-                          hintText: '*******',
-                          hintStyle: const TextStyle(
-                              fontSize: 16,
-                              color: Colors.white10,
-                              fontWeight: FontWeight.w400),
-                          border: const UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.grey),
-                          ),
-                        )),
-                  ),
+                  TextFormField(
+                      cursorColor: Colors.grey,
+                      obscureText: passVisibility,
+                      onChanged: (val) {
+                        setState(() {});
+                      },
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Please enter your password';
+                        } else if (value.length < 8) {
+                          return 'Password should be at least 8 characters';
+                        }
+                        return null;
+                      },
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      controller: passwordController,
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600),
+                      decoration: InputDecoration(
+                        fillColor: const Color(0xFF3E414A),
+
+                        filled: true,
+                        focusedBorder: const OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.white70, width: 2),
+                        ),
+                        contentPadding:
+                            const EdgeInsets.fromLTRB(5.0, 15.0, 20.0, 15.0),
+                        // prefixIcon: const Icon(FontAwesomeIcons.lock),
+                        suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                passVisibility = !passVisibility;
+                              });
+                            },
+                            icon: passVisibility
+                                ? const Icon(Icons.visibility_off,
+                                    color: Colors.grey)
+                                : const Icon(Icons.visibility,
+                                    color: Colors.grey)),
+                        prefixIconColor: Colors.grey,
+                        focusColor: null,
+                        hintText: '*******',
+                        hintStyle: const TextStyle(
+                            fontSize: 16,
+                            color: Colors.white10,
+                            fontWeight: FontWeight.w400),
+                        border: const UnderlineInputBorder(
+                          borderSide: BorderSide.none,
+                        ),
+                      )),
                   const SizedBox(
                     height: 60,
                   ),
@@ -167,7 +187,6 @@ class _LoginState extends State<Login> {
                     textcolour: Colors.white,
                     colour: const Color(0xFFAE0A13),
                     ontap: () {},
-                    
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -178,6 +197,11 @@ class _LoginState extends State<Login> {
                       ),
                       TextButton(
                           onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SignUp()));
+
                             // Navigator.pushNamed(context, '/sign_up');
                           },
                           child: const Text('Sign Up'))

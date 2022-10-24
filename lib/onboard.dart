@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_const
 
 import 'package:flutter/material.dart';
+import 'package:laundry/Sign_up.dart';
 import 'package:laundry/auth/log_in.dart';
 import 'package:laundry/widgets/button.dart';
 
@@ -10,6 +11,7 @@ class Onboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       body: Column(
         children: [
           Expanded(
@@ -34,30 +36,33 @@ class Onboard extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Container(
-                  child: Column(
-                    
-                    children: [
-                      const SizedBox(
-                        height: 50,
-                      ),
+                  child: Column(children: [
+                    const SizedBox(
+                      height: 50,
+                    ),
                     Button(
-
-                        colour:  const Color(0xFFAE0A13),
+                        colour: const Color(0xFFAE0A13),
                         title: 'Sign Up',
                         textcolour: Colors.white,
-                        ontap: () {}),
-                        const SizedBox(
-                        height: 30,
-                      ),
-                        Button(
-                        colour:  Colors.white,
+                        ontap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SignUp()));
+                        }),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Button(
+                        colour: Colors.white,
                         title: 'Log In',
                         textcolour: Colors.black,
                         ontap: () {
                           Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const Login()));
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Login()));
                         })
-
                   ]),
                 ),
               ))
