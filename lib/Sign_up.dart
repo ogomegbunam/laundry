@@ -1,6 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../widgets/button.dart';
+import 'package:page_transition/page_transition.dart';
+import 'Utils/snackbar.dart';
 import 'auth/log_in.dart';
 
 class SignUp extends StatefulWidget {
@@ -30,6 +34,47 @@ class _SignUpState extends State<SignUp> {
         validated = false;
       });
     }
+  }
+    Future<void> _Signup({
+    required String emailAddress,
+    required String password,
+  }) async {
+    try {
+      final signup = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+      if (signup.user != null) {
+        //context.loaderOverlay.hide();
+        // ignore: use_build_context_synchronously
+        ShowSnackBar(context, ' Sign Up sucessful please login');
+
+        // ignore: use_build_context_synchronously
+        Navigator.push(
+            context,
+            PageTransition(
+                child:const Login() , type: PageTransitionType.leftToRight));
+      }
+    } on FirebaseAuthException catch (e) {
+     // context.loaderOverlay.hide();
+
+      if (e.code == 'weak-password') {
+        ShowSnackBar(context, e.message!);
+
+        if (kDebugMode) {
+          print('The password provided is too weak.');
+        }
+      } else if (e.code == 'email-already-in-use') {
+        ShowSnackBar(context, e.message!);
+        if (kDebugMode) {
+          print('The account already exists for that email.');
+        }
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    } finally {}
   }
 
   @override
@@ -61,9 +106,6 @@ class _SignUpState extends State<SignUp> {
                 Column(children: [
                   Image.asset(
                     'images/Laundry3.png',
-                    // width: screenSize.width * 0.4,
-                    //height: 50,
-                    // fit: BoxFit.fitWidth,
                   ),
                 ]),
                 const Text(
@@ -148,6 +190,7 @@ class _SignUpState extends State<SignUp> {
 
                       return null;
                     },
+                    keyboardType: TextInputType.phone,
                     decoration: const InputDecoration(
                         fillColor: Color(0xFF3E414A),
                         filled: true,
@@ -157,7 +200,7 @@ class _SignUpState extends State<SignUp> {
                         ),
                         contentPadding:
                             EdgeInsets.fromLTRB(5.0, 15.0, 20.0, 15.0),
-                        // prefixIcon: Icon(FontAwesomeIcons.envelope),
+                        
                         prefixIconColor: Colors.white70,
                         focusColor: Color(0xFF3E414A),
                         hintText: '08012345678',
