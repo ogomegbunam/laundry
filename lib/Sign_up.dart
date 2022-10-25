@@ -328,7 +328,7 @@ class _SignUpState extends State<SignUp> {
                       colour: const Color(0xFFAE0A13),
                       ontap: _formKey.currentState?.validate() == true
                           ? () {
-                              context.loaderOverlay.show();
+                              //context.loaderOverlay.show();
                               Future<void> _Signup({
                                 required String emailAddress,
                                 required String password,
@@ -340,11 +340,11 @@ class _SignUpState extends State<SignUp> {
                                     password: passwordController.text,
                                   );
                                   if (signup.user != null) {
-                                    final userPhone = await DatabaseService()
-                                        .addPhone(
-                                            phone: phoneController.text,
-                                            email: emailController.text);
-                                    context.loaderOverlay.hide();
+                                  //   final userPhone = await DatabaseService()
+                                  //       .addPhone(
+                                  //           phone: phoneController.text,
+                                  //           email: emailController.text);
+                                  // //  context.loaderOverlay.hide();
                                     // ignore: use_build_context_synchronously
 
                                     // ignore: use_build_context_synchronously
@@ -360,7 +360,7 @@ class _SignUpState extends State<SignUp> {
                                                 .leftToRight));
                                   }
                                 } on FirebaseAuthException catch (e) {
-                                  context.loaderOverlay.hide();
+                                 // context.loaderOverlay.hide();
 
                                   if (e.code == 'weak-password') {
                                     ShowSnackBar(context, e.message!);
