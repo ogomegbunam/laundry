@@ -38,6 +38,69 @@ class _SignUpState extends State<SignUp> {
     }
   }
 
+  Future<void> _Signup({
+    required String emailAddress,
+    required String password,
+  }) async {
+    try {
+      final signup = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+      if (signup.user != null) {
+        DatabaseService().addPhone(phone: phoneController.text , email: emailController.text);
+        context.loaderOverlay.hide();
+        // ignore: use_build_context_synchronously
+        ShowSnackBar(context, ' Sign Up sucessful please login');
+
+        // ignore: use_build_context_synchronously
+        Navigator.push(
+            context,
+            PageTransition(
+                child: const Login(), type: PageTransitionType.leftToRight));
+      }
+    } on FirebaseAuthException catch (e) {
+      context.loaderOverlay.hide();
+
+      if (e.code == 'weak-password') {
+        ShowSnackBar(context, e.message!);
+
+        if (kDebugMode) {
+          print('The password provided is too weak.');
+        }
+      } else if (e.code == 'email-already-in-use') {
+        ShowSnackBar(context, e.message!);
+        if (kDebugMode) {
+          print('The account already exists for that email.');
+        }
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    } finally {}
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    // WidgetsBinding.instance.addPostFrameCallback((_) async {
+    //   if (widget.loggedOut) {
+    //     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+    //       content: Text('You have been logged out.'),
+    //     ));
+    //   }
+    // });
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -328,60 +391,11 @@ class _SignUpState extends State<SignUp> {
                       colour: const Color(0xFFAE0A13),
                       ontap: _formKey.currentState?.validate() == true
                           ? () {
-                              //context.loaderOverlay.show();
-                              Future<void> _Signup({
-                                required String emailAddress,
-                                required String password,
-                              }) async {
-                                try {
-                                  final signup = await FirebaseAuth.instance
-                                      .createUserWithEmailAndPassword(
-                                    email: emailController.text,
-                                    password: passwordController.text,
-                                  );
-                                  if (signup.user != null) {
-                                  //   final userPhone = await DatabaseService()
-                                  //       .addPhone(
-                                  //           phone: phoneController.text,
-                                  //           email: emailController.text);
-                                  // //  context.loaderOverlay.hide();
-                                    // ignore: use_build_context_synchronously
+                              context.loaderOverlay.show();
 
-                                    // ignore: use_build_context_synchronously
-                                    ShowSnackBar(context,
-                                        ' Sign Up sucessful please login');
-
-                                    // ignore: use_build_context_synchronously
-                                    Navigator.push(
-                                        context,
-                                        PageTransition(
-                                            child: const Login(),
-                                            type: PageTransitionType
-                                                .leftToRight));
-                                  }
-                                } on FirebaseAuthException catch (e) {
-                                 // context.loaderOverlay.hide();
-
-                                  if (e.code == 'weak-password') {
-                                    ShowSnackBar(context, e.message!);
-
-                                    if (kDebugMode) {
-                                      print(
-                                          'The password provided is too weak.');
-                                    }
-                                  } else if (e.code == 'email-already-in-use') {
-                                    ShowSnackBar(context, e.message!);
-                                    if (kDebugMode) {
-                                      print(
-                                          'The account already exists for that email.');
-                                    }
-                                  }
-                                } catch (e) {
-                                  if (kDebugMode) {
-                                    print(e);
-                                  }
-                                } finally {}
-                              }
+                              _Signup(
+                                  emailAddress: emailController.text,
+                                  password: passwordController.text);
                             }
                           : () {}),
                   Row(
