@@ -47,7 +47,8 @@ class _LoginState extends State<Login> {
         password: password,
       );
       if (signin.user != null) {
-
+        context.loaderOverlay.hide();
+        ShowSnackBar(context, ' Log in sucessful ');
         Navigator.pushReplacement(
           context,
           PageTransition(
@@ -56,19 +57,7 @@ class _LoginState extends State<Login> {
           ),
         );
       }
-      // final signin = await FirebaseAuth.instance
-      //     .signInWithEmailAndPassword(email: emailController.text, password: passwordController.text);
 
-      // if (signin.user != null) {
-      //   context.loaderOverlay.hide();
-      //   // ignore: use_build_context_synchronously
-      //   ShowSnackBar(context, ' LogIn sucessful please login');
-      //   // ignore: use_build_context_synchronously
-      //   Navigator.push(
-      //       context,
-      //       PageTransition(
-      //           child: const Home(), type: PageTransitionType.leftToRight));
-      // }
     } on FirebaseAuthException catch (e) {
       context.loaderOverlay.hide();
       if (e.code == 'user-not-found') {
