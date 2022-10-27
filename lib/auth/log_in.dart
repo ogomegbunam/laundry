@@ -47,7 +47,7 @@ class _LoginState extends State<Login> {
         password: password,
       );
       if (signin.user != null) {
-        print('gggg');
+
         Navigator.pushReplacement(
           context,
           PageTransition(
@@ -159,6 +159,7 @@ class _LoginState extends State<Login> {
                       height: 5,
                     ),
                     TextFormField(
+                      controller: emailController,
                         cursorColor: Colors.grey,
                         style: const TextStyle(
                             color: Colors.white,
