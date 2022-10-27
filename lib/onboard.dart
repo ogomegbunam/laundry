@@ -11,7 +11,6 @@ class Onboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: Column(
         children: [
           Expanded(
@@ -41,19 +40,6 @@ class Onboard extends StatelessWidget {
                       height: 50,
                     ),
                     Button(
-                        colour: const Color(0xFFAE0A13),
-                        title: 'Sign Up',
-                        textcolour: Colors.white,
-                        ontap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const SignUp()));
-                        }),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    Button(
                         colour: Colors.white,
                         title: 'Log In',
                         textcolour: Colors.black,
@@ -62,6 +48,19 @@ class Onboard extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => const Login()));
+                        }),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Button(
+                        colour: const Color(0xFFAE0A13),
+                        title: 'Sign Up',
+                        textcolour: Colors.white,
+                        ontap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SignUp()));
                         })
                   ]),
                 ),

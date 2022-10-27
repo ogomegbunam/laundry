@@ -48,7 +48,9 @@ class _LoginState extends State<Login> {
       );
       if (signin.user != null) {
         context.loaderOverlay.hide();
+        // ignore: use_build_context_synchronously
         ShowSnackBar(context, ' Log in sucessful ');
+        // ignore: use_build_context_synchronously
         Navigator.pushReplacement(
           context,
           PageTransition(
