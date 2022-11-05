@@ -24,7 +24,7 @@ class _HomeState extends State<Home> {
               SizedBox(
                 height: 50,
               ),
-              Expanded(flex: 1,child: Text('aga')),
+              Expanded(flex: 1,child: Text('Our Services',style: TextStyle(fontSize: 40,fontWeight:  FontWeight.w700,fontStyle: FontStyle.italic),)),
               Expanded(flex: 5,child: GridView.builder(
                 itemCount:AppModel.getApps().length ,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

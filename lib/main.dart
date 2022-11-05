@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0xFF1E1E1E),
         primarySwatch: generateMaterialColor(color: const Color(0xFfAE0A13)),
       ),
-      home:  const Home(),
+      home:  const Splashscreen(),
     );
   }
 }
