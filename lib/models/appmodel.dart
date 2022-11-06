@@ -15,7 +15,7 @@ class AppModel {
         AppModel("Ironing", FontAwesomeIcons.car, "images/E3.jpg",
             '/request'),
         AppModel("House Cleaning", FontAwesomeIcons.utensils, "images/E2.JPG",
-            '/request'),
+            '/requestService'),
         AppModel("", FontAwesomeIcons.laptopMedical,
             "images/E4.JPG", '/request'),
         AppModel("iMart", FontAwesomeIcons.shoppingCart,
