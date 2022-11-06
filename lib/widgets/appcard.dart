@@ -42,8 +42,10 @@ class AppCard extends StatelessWidget {
               // SizedBox(width: 10,),
               Text(
                 '${appModel.title} ',
-                style: const TextStyle(
-                  color: Colors.white70
+                style:  TextStyle(
+                  color: Colors.white70.withOpacity(0.9),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
                   // color: kwhite.withOpacity(.5),
                  // color: kwhite,
                 ),
