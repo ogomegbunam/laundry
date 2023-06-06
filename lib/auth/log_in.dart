@@ -99,8 +99,8 @@ class _LoginState extends State<Login> {
           return DecoratedBox(
             decoration: BoxDecoration(
                 color: index.isEven
-                    ? const Color(0xFFAE0A13)
-                    : const Color(0xFFAE0A13),
+                    ? const Color(0xFF165044)
+                    : const Color(0xFF165044),
                 shape: BoxShape.circle),
           );
         },
@@ -113,7 +113,7 @@ class _LoginState extends State<Login> {
           leading: IconButton(
             icon: const Icon(
               Icons.arrow_back_ios,
-              color: Colors.white,
+              color: Color(0xFF165044),
             ),
             onPressed: () {
               Navigator.pop(context);
@@ -130,18 +130,23 @@ class _LoginState extends State<Login> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Column(children: [
-                      Image.asset(
-                        'images/Laundry3.png',
-                        // width: screenSize.width * 0.4,
-                        //height: 50,
-                        // fit: BoxFit.fitWidth,
+                      Padding(
+                        padding: const EdgeInsets.all(30.0),
+                        child: Container(
+                          child: Image.asset(
+                            'images/wwm.png',
+                            // width: screenSize.width * 0.4,
+                            //height: 50,
+                            // fit: BoxFit.fitWidth,
+                          ),
+                        ),
                       ),
                     ]),
                     const Text(
                       'Email Address',
                       style: TextStyle(
                           fontSize: 16,
-                          color: Colors.white60,
+                          color: Colors.black38,
                           fontWeight: FontWeight.w700),
                     ),
                     const SizedBox(
@@ -149,9 +154,9 @@ class _LoginState extends State<Login> {
                     ),
                     TextFormField(
                       controller: emailController,
-                        cursorColor: Colors.grey,
+                        cursorColor: Colors.black12,
                         style: const TextStyle(
-                            color: Colors.white,
+                            color: Colors.black54,
                             fontSize: 16,
                             fontWeight: FontWeight.w600),
                         autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -167,22 +172,22 @@ class _LoginState extends State<Login> {
 
                           return null;
                         },
-                        decoration: const InputDecoration(
-                            fillColor: Color(0xFF3E414A),
+                        decoration:  InputDecoration(
+                            fillColor: Colors.grey.shade50,
                             filled: true,
                             focusedBorder: OutlineInputBorder(
                               borderSide:
-                                  BorderSide(color: Colors.white70, width: 2),
+                                  BorderSide(color: Colors.black12, width: 2),
                             ),
                             contentPadding:
                                 EdgeInsets.fromLTRB(5.0, 15.0, 20.0, 15.0),
                             // prefixIcon: Icon(FontAwesomeIcons.envelope),
-                            prefixIconColor: Colors.white70,
-                            focusColor: Color(0xFF3E414A),
+                            prefixIconColor: Colors.black,
+                            focusColor: Colors.black12,
                             hintText: 'JohnDoe@email.com',
                             hintStyle: TextStyle(
                                 fontSize: 16,
-                                color: Colors.white10,
+                                color: Colors.black54,
                                 fontWeight: FontWeight.w400),
                             border: UnderlineInputBorder(
                                 borderSide: BorderSide.none))),
@@ -193,7 +198,7 @@ class _LoginState extends State<Login> {
                       'Password',
                       style: TextStyle(
                           fontSize: 16,
-                          color: Colors.white60,
+                          color: Colors.black38,
                           fontWeight: FontWeight.w700),
                     ),
                     const SizedBox(
@@ -216,16 +221,16 @@ class _LoginState extends State<Login> {
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         controller: passwordController,
                         style: const TextStyle(
-                            color: Colors.white,
+                            color: Colors.black54,
                             fontSize: 16,
                             fontWeight: FontWeight.w600),
                         decoration: InputDecoration(
-                          fillColor: const Color(0xFF3E414A),
+                          fillColor:  Colors.grey.shade100,
 
                           filled: true,
                           focusedBorder: const OutlineInputBorder(
                             borderSide:
-                                BorderSide(color: Colors.white70, width: 2),
+                                BorderSide(color: Colors.black12, width: 2),
                           ),
                           contentPadding:
                               const EdgeInsets.fromLTRB(5.0, 15.0, 20.0, 15.0),
@@ -238,15 +243,15 @@ class _LoginState extends State<Login> {
                               },
                               icon: passVisibility
                                   ? const Icon(Icons.visibility_off,
-                                      color: Colors.grey)
+                                      color: Colors.black38)
                                   : const Icon(Icons.visibility,
-                                      color: Colors.grey)),
+                                      color: Colors.black38)),
                           prefixIconColor: Colors.grey,
                           focusColor: null,
                           hintText: '*******',
                           hintStyle: const TextStyle(
                               fontSize: 16,
-                              color: Colors.white10,
+                              color: Colors.black12,
                               fontWeight: FontWeight.w400),
                           border: const UnderlineInputBorder(
                             borderSide: BorderSide.none,
@@ -258,7 +263,7 @@ class _LoginState extends State<Login> {
                     Button(
                         title: 'Log In',
                         textcolour: Colors.white,
-                        colour: const Color(0xFFAE0A13),
+                        colour: const Color(0xFF165044),
                         ontap: () {
                           context.loaderOverlay.show();
                           _signin(
@@ -273,7 +278,7 @@ class _LoginState extends State<Login> {
                       children: [
                         const Text(
                           'Don\'t have an account?',
-                          style: TextStyle(color: Colors.white70, fontSize: 14),
+                          style: TextStyle(color: Colors.black54, fontSize: 14),
                         ),
                         TextButton(
                             onPressed: () {

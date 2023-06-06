@@ -11,7 +11,7 @@ class Onboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      backgroundColor: Colors.white,
       body: Column(
         children: [
           Expanded(
@@ -19,15 +19,18 @@ class Onboard extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: const AssetImage('images/E4.JPG'),
+                    image: const AssetImage('images/wwm3.png'),
                     fit: BoxFit.fill,
                     colorFilter: ColorFilter.mode(
-                        Colors.black.withOpacity(0.1), BlendMode.dstATop),
+                        Colors.white.withOpacity(0.1), BlendMode.dstATop),
                   ),
                 ),
-                child: Center(
-                  child: Image.asset(
-                    'images/Laundry3.png',
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Center(
+                    child: Image.asset(
+                      'images/wwm.png',
+                    ),
                   ),
                 ),
               )),
@@ -41,7 +44,7 @@ class Onboard extends StatelessWidget {
                       height: 50,
                     ),
                     Button(
-                        colour: const Color(0xFFAE0A13),
+                        colour: const Color(0xFF165044),
                         title: 'Sign Up',
                         textcolour: Colors.white,
                         ontap: () {
@@ -54,7 +57,7 @@ class Onboard extends StatelessWidget {
                       height: 30,
                     ),
                     Button(
-                        colour: Colors.white,
+                        colour: Color(0XFF00DFA2),
                         title: 'Log In',
                         textcolour: Colors.black,
                         ontap: () {

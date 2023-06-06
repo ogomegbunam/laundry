@@ -48,7 +48,8 @@ class _SignUpState extends State<SignUp> {
         password: passwordController.text,
       );
       if (signup.user != null) {
-        DatabaseService().addPhone(phone: phoneController.text , email: emailController.text);
+        DatabaseService()
+            .addPhone(phone: phoneController.text, email: emailController.text);
         context.loaderOverlay.hide();
         // ignore: use_build_context_synchronously
         ShowSnackBar(context, ' Sign Up sucessful please login');
@@ -115,26 +116,13 @@ class _SignUpState extends State<SignUp> {
           return DecoratedBox(
             decoration: BoxDecoration(
                 color: index.isEven
-                    ? const Color(0xFFAE0A13)
-                    : const Color(0xFFAE0A13),
+                    ? const Color(0xFF165044)
+                    : const Color(0xFF165044),
                 shape: BoxShape.circle),
           );
         },
       ),
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(
-              Icons.arrow_back_ios,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
         //backgroundColor: Color,
         body: SingleChildScrollView(
           child: Form(
@@ -146,14 +134,14 @@ class _SignUpState extends State<SignUp> {
                 children: [
                   Column(children: [
                     Image.asset(
-                      'images/Laundry3.png',
+                      'images/wwm2.png',
                     ),
                   ]),
                   const Text(
                     'Email Address',
                     style: TextStyle(
                         fontSize: 16,
-                        color: Colors.white60,
+                        color: Colors.black38,
                         fontWeight: FontWeight.w700),
                   ),
                   const SizedBox(
@@ -163,7 +151,7 @@ class _SignUpState extends State<SignUp> {
                       controller: emailController,
                       cursorColor: Colors.grey,
                       style: const TextStyle(
-                          color: Colors.white,
+                          color: Colors.black54,
                           fontSize: 16,
                           fontWeight: FontWeight.w600),
                       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -179,24 +167,24 @@ class _SignUpState extends State<SignUp> {
 
                         return null;
                       },
-                      decoration: const InputDecoration(
-                          fillColor: Color(0xFF3E414A),
+                      decoration: InputDecoration(
+                          fillColor: Colors.grey.shade100,
                           filled: true,
                           focusedBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Colors.white70, width: 2),
+                            borderSide: BorderSide(
+                                color: Colors.grey.shade100, width: 2),
                           ),
                           contentPadding:
                               EdgeInsets.fromLTRB(5.0, 15.0, 20.0, 15.0),
                           // prefixIcon: Icon(FontAwesomeIcons.envelope),
                           prefixIconColor: Colors.white70,
-                          focusColor: Color(0xFF3E414A),
+                          focusColor: Colors.black38,
                           hintText: 'JohnDoe@email.com',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                               fontSize: 16,
-                              color: Colors.white10,
+                              color: Colors.black12,
                               fontWeight: FontWeight.w400),
-                          border: UnderlineInputBorder(
+                          border: const UnderlineInputBorder(
                               borderSide: BorderSide.none))),
                   const SizedBox(
                     height: 24,
@@ -205,7 +193,7 @@ class _SignUpState extends State<SignUp> {
                     'Phone Number',
                     style: TextStyle(
                         fontSize: 16,
-                        color: Colors.white60,
+                        color: Colors.black38,
                         fontWeight: FontWeight.w700),
                   ),
                   const SizedBox(
@@ -215,7 +203,7 @@ class _SignUpState extends State<SignUp> {
                       controller: phoneController,
                       cursorColor: Colors.grey,
                       style: const TextStyle(
-                          color: Colors.white,
+                          color: Colors.black54,
                           fontSize: 16,
                           fontWeight: FontWeight.w600),
                       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -232,23 +220,23 @@ class _SignUpState extends State<SignUp> {
                         return null;
                       },
                       keyboardType: TextInputType.phone,
-                      decoration: const InputDecoration(
-                          fillColor: Color(0xFF3E414A),
+                      decoration: InputDecoration(
+                          fillColor: Colors.grey.shade100,
                           filled: true,
-                          focusedBorder: OutlineInputBorder(
+                          focusedBorder: const OutlineInputBorder(
                             borderSide:
-                                BorderSide(color: Colors.white70, width: 2),
+                                BorderSide(color: Colors.black12, width: 2),
                           ),
                           contentPadding:
-                              EdgeInsets.fromLTRB(5.0, 15.0, 20.0, 15.0),
+                              const EdgeInsets.fromLTRB(5.0, 15.0, 20.0, 15.0),
                           prefixIconColor: Colors.white70,
-                          focusColor: Color(0xFF3E414A),
+                          focusColor: Colors.black12,
                           hintText: '08012345678',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                               fontSize: 16,
-                              color: Colors.white10,
+                              color: Colors.black12,
                               fontWeight: FontWeight.w400),
-                          border: UnderlineInputBorder(
+                          border: const UnderlineInputBorder(
                               borderSide: BorderSide.none))),
                   const SizedBox(
                     height: 24,
@@ -257,7 +245,7 @@ class _SignUpState extends State<SignUp> {
                     'Password',
                     style: TextStyle(
                         fontSize: 16,
-                        color: Colors.white60,
+                        color: Colors.black38,
                         fontWeight: FontWeight.w700),
                   ),
                   const SizedBox(
@@ -280,11 +268,11 @@ class _SignUpState extends State<SignUp> {
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       controller: passwordController,
                       style: const TextStyle(
-                          color: Colors.white,
+                          color: Colors.black54,
                           fontSize: 16,
                           fontWeight: FontWeight.w600),
                       decoration: InputDecoration(
-                        fillColor: const Color(0xFF3E414A),
+                        fillColor: Colors.grey.shade100,
 
                         filled: true,
                         focusedBorder: const OutlineInputBorder(
@@ -310,7 +298,7 @@ class _SignUpState extends State<SignUp> {
                         hintText: '*******',
                         hintStyle: const TextStyle(
                             fontSize: 16,
-                            color: Colors.white10,
+                            color: Colors.black12,
                             fontWeight: FontWeight.w400),
                         border: const UnderlineInputBorder(
                           borderSide: BorderSide.none,
@@ -323,7 +311,7 @@ class _SignUpState extends State<SignUp> {
                     'Confirm Password',
                     style: TextStyle(
                         fontSize: 16,
-                        color: Colors.white60,
+                        color: Colors.black38,
                         fontWeight: FontWeight.w700),
                   ),
                   const SizedBox(
@@ -346,11 +334,11 @@ class _SignUpState extends State<SignUp> {
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       controller: confirmPasswordController,
                       style: const TextStyle(
-                          color: Colors.white,
+                          color: Colors.black54,
                           fontSize: 16,
                           fontWeight: FontWeight.w600),
                       decoration: InputDecoration(
-                        fillColor: const Color(0xFF3E414A),
+                        fillColor: Colors.grey.shade100,
 
                         filled: true,
                         focusedBorder: const OutlineInputBorder(
@@ -376,7 +364,7 @@ class _SignUpState extends State<SignUp> {
                         hintText: '*******',
                         hintStyle: const TextStyle(
                             fontSize: 16,
-                            color: Colors.white10,
+                            color: Colors.black12,
                             fontWeight: FontWeight.w400),
                         border: const UnderlineInputBorder(
                           borderSide: BorderSide.none,
@@ -388,7 +376,7 @@ class _SignUpState extends State<SignUp> {
                   Button(
                       title: 'Sign Up',
                       textcolour: Colors.white,
-                      colour: const Color(0xFFAE0A13),
+                      colour: const Color(0xFF165044),
                       ontap: _formKey.currentState?.validate() == true
                           ? () {
                               context.loaderOverlay.show();
@@ -403,7 +391,7 @@ class _SignUpState extends State<SignUp> {
                     children: [
                       const Text(
                         'Already have an account?',
-                        style: TextStyle(color: Colors.white70, fontSize: 14),
+                        style: TextStyle(color: Colors.black54, fontSize: 14),
                       ),
                       TextButton(
                           onPressed: () {

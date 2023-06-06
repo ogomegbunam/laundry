@@ -30,11 +30,14 @@ class _SplashscreenState extends State<Splashscreen> {
           Expanded(
               flex: 2,
               child: Container(
-                color: const Color(0xFF1E1E1E),
-                child: Center(
-                  child: Image.asset(
-                    'images/Laundry3.png',
-                    
+                color:  Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.all(30.0),
+                  child: Center(
+                    child: Image.asset(
+                      'images/wwm3.png',
+
+                    ),
                   ),
                 ),
               )),
